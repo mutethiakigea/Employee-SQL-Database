@@ -1,0 +1,6 @@
+CREATE TABLE countries
+(
+CountryID INT PRIMARY KEY,
+CountryName VARCHAR (150) NOT NULL,
+CountryAbbr(5),
+Capital VARCHAR(100)
