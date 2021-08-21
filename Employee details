@@ -1,6 +1,16 @@
-CREATE TABLE countries
-(
-CountryID INT PRIMARY KEY,
-CountryName VARCHAR (150) NOT NULL,
-CountryAbbr(5),
-Capital VARCHAR(100)
+CREATE TABLE `person` (
+	`PersonID` INT(11) NOT NULL,
+	`FirstName` VARCHAR(50) NULL DEFAULT NULL COLLATE 'latin1_swedish_ci',
+	`LastName` VARCHAR(50) NULL DEFAULT NULL COLLATE 'latin1_swedish_ci',
+	`PhoneNumber` INT(10) NULL DEFAULT NULL,
+	`DOB` DATE NULL DEFAULT NULL,
+	`Salary` DECIMAL(10,2) NULL DEFAULT NULL,
+	`DepartmentID` INT(11) NULL DEFAULT NULL,
+	PRIMARY KEY (`PersonID`) USING BTREE,
+	UNIQUE INDEX `PhoneNumber` (`PhoneNumber`) USING BTREE,
+	INDEX `FK1 DepartmentID_Employees` (`DepartmentID`) USING BTREE,
+	CONSTRAINT `FK1 DepartmentID_Employees` FOREIGN KEY (`DepartmentID`) REFERENCES `employees`.`departments` (`DepartmentID`) ON UPDATE RESTRICT ON DELETE RESTRICT
+)
+COLLATE='latin1_swedish_ci'
+ENGINE=InnoDB
+;
